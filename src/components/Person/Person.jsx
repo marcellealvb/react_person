@@ -1,22 +1,21 @@
 export const Person = ({ person }) => {
+  const { name, age, sex, isMarried, partnerName } = person;
   const ageBlock =
-    person.age != null ? (
-      <p className="Person__age">{`I am ${person.age}`}</p>
-    ) : null;
+    age != null ? <p className="Person__age">{`I am ${age}`}</p> : null;
 
   let partnerLabel;
 
-  if (!person.isMarried) {
+  if (!isMarried) {
     partnerLabel = 'I am not married';
-  } else if (person.sex === 'm') {
-    partnerLabel = `${person.partnerName} is my wife`;
+  } else if (sex === 'm') {
+    partnerLabel = `${partnerName} is my wife`;
   } else {
-    partnerLabel = `${person.partnerName} is my husband`;
+    partnerLabel = `${partnerName} is my husband`;
   }
 
   return (
     <section className="Person">
-      <h2 className="Person__name">{`My name is ${person.name}`}</h2>
+      <h2 className="Person__name">{`My name is ${name}`}</h2>
       {ageBlock}
 
       <p className="Person__partner">{partnerLabel}</p>
